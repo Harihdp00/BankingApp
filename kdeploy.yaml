@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: BankingApp
+  namespace: dev
   labels:
     app: BankingApp-label
 spec:
@@ -16,7 +17,7 @@ spec:
     spec:
       containers:
       - name: BankingApp
-        image: harihdp/bankingproject:${BUILD_NUMBER}
+        image: harihdp/bankingproject:BUILD_NUMBER_PLACEHOLDER
         ports:
         - containerPort: 8082
 ---
@@ -24,6 +25,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: BankingApp
+  namespace: dev
   labels:
     app: BankingApp-label
 spec:
