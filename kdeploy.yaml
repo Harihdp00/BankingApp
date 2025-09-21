@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: BankingApp
-        image: harihdp/bankingproject:BUILD_NUMBER_PLACEHOLDER
+        image: harihdp/bankingproject:2
         ports:
         - containerPort: 8082
 ---
