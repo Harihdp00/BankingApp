@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: BankingApp
+  labels:
+    app: BankingApp-label
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: BankingApp
+  template:
+    metadata:
+      labels:
+        app: BankingApp-label
+    spec:
+      containers:
+      - name: BankingApp
+        image: harihdp/bankingproject:${BUILD_NUMBER}
+        ports:
+        - containerPort: 8082
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: BankingApp
+  labels:
+    app: BankingApp-label
+spec:
+  selector:
+    app: BankingApp-label
+
+  type: NodePort
+  ports:
+  - nodePort: 
+    port: 8082
+    targetPort: 8082	
